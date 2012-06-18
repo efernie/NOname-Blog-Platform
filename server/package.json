@@ -1,0 +1,12 @@
+{
+  "name": "Site Editor",
+  "description": "A site editor",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "2.x",
+    "underscore": "1.x",
+    "connect-gzip": "x",
+    "socket.io": "0.x",
+    "q": "x"
+  }
+}
