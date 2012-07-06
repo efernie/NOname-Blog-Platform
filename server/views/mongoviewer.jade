@@ -1,0 +1,12 @@
+extends layout
+block content
+  #main
+    #mongodbs
+
+
+block scripts
+  script(src="/src/mongo.js")
+
+  script(type="text/x-handlebars-template")#mongoView
+    br
+    li {{name}}

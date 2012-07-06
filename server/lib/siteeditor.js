@@ -21,4 +21,16 @@ exports.init = function (app, opts) {
     'publicDir': opts.publicDirectory,
     'libs' : exports
   });
+
+  exports.github = require('github/github')({
+    'baseDir': opts.baseDirectory,
+    'publicDir': opts.publicDirectory,
+    'libs' : exports
+  });
+
+  exports.mongo = require('mongo/mongo')({
+    'baseDir': opts.baseDirectory,
+    'publicDir': opts.publicDirectory,
+    'libs' : exports
+  });
 };

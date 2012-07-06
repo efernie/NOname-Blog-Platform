@@ -3,6 +3,7 @@ var express = require('express')
   , config = require('./config')[ENV]
   , cluster = require('cluster')
   , gzip = require('connect-gzip')
+  , totalCPUS = require('os').cpus().length
   , app = express.createServer()
   , publicDir = __dirname + '/../client'
   , baseDir = __dirname
@@ -11,7 +12,8 @@ var express = require('express')
 
 app.set('views', __dirname + '/views')
   .set('view options', { 'layout': false, pretty: true })
-  .set('view engine', 'jade');
+  .set('view engine', 'jade')
+;
 
 
 app.use(express.bodyParser())

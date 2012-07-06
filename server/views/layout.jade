@@ -17,13 +17,20 @@ html(lang="en").no-js
       nav
         ul
           li
-            a(href="#") Home
+            a(href="/") Home
           li
             a(href="#about") About
           li
             a(href="#docs") Docs
+          li
+            a(href="/github") github
+          li
+            a(href="/mongoviewer") mongo
 
     block content
 
     script(src="assets/js/jquery-1.7.2.min.js")
+    script(src="/assets/js/underscore.min.js")
+    script(src="/assets/js/backbone.min.js")
+    script(src="/assets/js/handlebars.js")
     block scripts

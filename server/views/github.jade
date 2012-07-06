@@ -1,0 +1,19 @@
+extends layout
+block content
+  #main
+    form()#githubForm
+      label Search Keyword
+      input(type="text", name="keyword")
+      button() Search
+    #githubRepos
+
+
+block scripts
+  script(src="/src/github.js")
+
+  script(type="text/x-handlebars-template")#githubView
+    br
+    li {{name}}
+    li {{watchers}}
+    li
+      a(href="{{url}}", target="_blank") {{url}}
