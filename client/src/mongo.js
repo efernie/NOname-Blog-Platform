@@ -31,7 +31,7 @@ $(function(){
       var that = this;
 
       that.$el.empty();
-
+      console.log(that)
       _.each(that.collection.models, function (repo) {
         that.$el.append( that.templateCompiled( repo.attributes ) );
       });

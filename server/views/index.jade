@@ -2,18 +2,30 @@ extends layout
 block content
   #main
     #fileList
-    #fileContents
-    form()#fileSaver
-      textarea(name="file")#fileContent
-      button()#saveFile Save File
+      ul#server
+      #public
 
-    button()#checkValidity Check
   footer
 
 block scripts
-  script(src="/src/test.js")
   script(src="/src/app.js")
 
   script(type="text/x-handlebars-template")#folderViewTemp
-    li {{folder.name}}
+    br
+    {{#if isFile}}
+    li {{name}} - {{parentDir}}
+    {{else}}
+    li(data-folderName="{{name}}").folder {{name}}
+    {{/if}}
+    //- {{#if sub}}
+    //- ul
+    //-   {{#each sub}}
+    //-   li {{name}}
+    //-   {{/each}}
+    //- {{/if}}
 
+  script(type="text/x-handlebars-template")#subFolder
+    ul
+      {{#each sub}}
+      li {{name}}
+      {{/each}}

@@ -1,0 +1,14 @@
+extends layout
+block content
+  #main
+    #fileContents
+    form()#fileSaver
+      textarea(name="file")#fileContent
+      button()#saveFile Save File
+
+    button()#checkValidity Check
+  footer
+
+block scripts
+  script(src="/src/editor.js")
+
