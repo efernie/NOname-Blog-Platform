@@ -3,6 +3,7 @@ block content
   #main
     #fileList
       ul#server
+
       #public
 
   footer
@@ -11,21 +12,12 @@ block scripts
   script(src="/src/app.js")
 
   script(type="text/x-handlebars-template")#folderViewTemp
-    br
-    {{#if isFile}}
-    li {{name}} - {{parentDir}}
-    {{else}}
     li(data-folderName="{{name}}").folder {{name}}
-    {{/if}}
-    //- {{#if sub}}
-    //- ul
-    //-   {{#each sub}}
-    //-   li {{name}}
-    //-   {{/each}}
-    //- {{/if}}
+      ul
 
-  script(type="text/x-handlebars-template")#subFolder
-    ul
-      {{#each sub}}
-      li {{name}}
-      {{/each}}
+  script(type="text/x-handlebars-template")#fileTemplate
+    li(data-fileName="{{name}}").file {{name}}
+
+  script(type="text/x-handlebars-template")#baseFolderTemplate
+    li(data-folderName="{{base}}").folder {{base}}
+      ul
