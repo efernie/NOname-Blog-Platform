@@ -61,28 +61,39 @@ noName.collections.serverfolders = Backbone.Collection.extend({
       _.each($('#server').find('li'), function (elem) {
         // console.log( $(elem).data('foldername') )
         var folderName = $(elem).data('foldername');
-        if( folderName ) {
+        if( folderName && folderName != baseName) {
           alreadyAppened.push( $(elem).data('foldername') );
         }
         // var indexOfFolder = _.indexOf( folders, $(elem).data('foldername') );
         // folders.splice( indexOfFolder, indexOfFolder + 1 );
       });
       console.log( alreadyAppened )
+      _.each( alreadyAppened, function (appfolders) {
+        // console.log(appfolders)
+      });
+
       _.each( self.models, function (models) {
         if( models.attributes.type === 'folder' ) {
-          console.log(models.attributes.name, models.attributes.parent)
+          // console.log(models.attributes.name, models.attributes.parent)
+          // console.log( models.attributes.parent.split('/')[0] )
           // console.log(folders)
-          // for (var i = alreadyAppened.length - 1; i >= 0; i--) {
-          //   // console.log( models.attributes.parent )
-          //   if ( folders[i] != models.attributes.name ) {
-          //     console.log(models.attributes)
-          //     // foldersObjArr.push(models)
-          //     // self.trigger('sortFolder', [foldersObjArr, folders]);
-          //   }
-          // };
+          for (var i = alreadyAppened.length - 1; i >= 0; i--) {
+            if (models.attributes.parent.split('/')[0] === alreadyAppened[i] ) {
+              console.log(models.attributes.name)
+              foldersObjArr.push(models);
+
+            }
+            // console.log( models.attributes.parent )
+            // if ( folders[i] != models.attributes.name ) {
+            //   console.log(models.attributes)
+            //   // foldersObjArr.push(models)
+            //   // self.trigger('sortFolder', [foldersObjArr, folders]);
+            // }
+          };
         }
       });
-      console.log('trigger')
+      self.trigger('sortFolder', [foldersObjArr, folders]);
+      // console.log('trigger')
       // console.log(foldersObjArr)
       console.log(folders)
       // self.trigger('sortFolder', [foldersObjArr, folders]);
@@ -131,7 +142,7 @@ noName.views.folders = Backbone.View.extend({
       , parentFolder
       , parentName = folder[0][0].attributes.parent
       ;
-
+      console.log(parentName)
     _.each( self.$el.find('li'), function (parentElem) {
       if ( $(parentElem).data("foldername") === parentName ) {
         parentFolder = $(parentElem).children('ul');
